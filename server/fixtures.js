@@ -7,3 +7,13 @@ if(Activities.find().count() === 0){
 		name: "második feladat..."
 	});
 }
+
+if(Employees.find().count() === 0){
+	Employees.insert({
+		name: "Béla"
+	});
+
+	Employees.insert({
+		name: "Géza"
+	});
+}

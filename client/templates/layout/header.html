@@ -9,13 +9,17 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="{{pathFor 'home'}}">Kezdőlap</a>
-                <a class="navbar-brand" href="{{pathFor 'activityList'}}">Feladatok</a>
-				<a class="navbar-brand" href="{{pathFor 'reportList'}}">Bejelentések</a>
+				{{#if currentUser}}
+					<a class="navbar-brand" href="{{pathFor 'activityList'}}">Feladatok</a>
+					<a class="navbar-brand" href="{{pathFor 'reportList'}}">Bejelentések</a>
+					<a class="navbar-brand" href="{{pathFor 'employeeList'}}">Felhasználók</a>
+				{{else}}
                 <a class="navbar-brand" href="{{pathFor 'errorReport'}}">Hibabejelentés</a>
+				{{/if}}
 			</div>
 			<div class="collapse navbar-collapse" id="navigation">
 				<ul class="nav navbar-nav navbar-right">
-            {{> loginButtons}}
+            		{{> loginButtons}}
 				</ul>
 			</div>
 		</div>

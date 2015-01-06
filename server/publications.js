@@ -5,3 +5,7 @@ Meteor.publish("activities", function(){
 Meteor.publish("reports", function(){
 	return Reports.find();
 });
+
+Meteor.publish("employees", function(){
+	return Employees.find();
+});

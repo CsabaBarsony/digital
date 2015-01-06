@@ -3,3 +3,4 @@ Template.activityList.helpers({
 		return Activities.find();
 	}
 });
+
