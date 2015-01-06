@@ -1,5 +1,13 @@
 <template name="employeeList">
-  {{#each employees}}
-    {{> employee}}
-  {{/each}}
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3>Alkalmazottak</h3>
+		</div>
+		<ul class="list-group">
+          {{#each employees}}
+            {{> employee}}
+          {{/each}}
+		</ul>
+		<!--<div class="panel-footer">Panel footer</div>-->
+	</div>
 </template>

@@ -10,9 +10,8 @@
 				</button>
 				<a class="navbar-brand" href="{{pathFor 'home'}}">Kezdőlap</a>
 				{{#if currentUser}}
-					<a class="navbar-brand" href="{{pathFor 'activityList'}}">Feladatok</a>
 					<a class="navbar-brand" href="{{pathFor 'reportList'}}">Bejelentések</a>
-					<a class="navbar-brand" href="{{pathFor 'employeeList'}}">Felhasználók</a>
+					<a class="navbar-brand" href="{{pathFor 'employeeList'}}">Alkalmazottak</a>
 				{{else}}
                 <a class="navbar-brand" href="{{pathFor 'errorReport'}}">Hibabejelentés</a>
 				{{/if}}

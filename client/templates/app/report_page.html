@@ -1,4 +1,21 @@
 <template name="reportPage">
   Feladó: {{name}}<br/>
-  Hibaleírás: {{description}}
+  Hibaleírás: {{description}}<br/>
+	{{#if employeeId}}
+		Felelős: {{ownEmployee.name}}
+	{{else}}
+		nincs felelős hozzárendelve
+	{{/if}}
+	<div class="dropdown">
+		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+		  Felelős hozzárendelése
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+          {{#each employees}}
+            <li role="presentation"><a class="employee-list-item" data-employee-id="{{_id}}" role="menuitem" tabindex="-1" href="#">{{name}}</a></li>
+          {{/each}}
+		</ul>
+	</div>
+
 </template>
