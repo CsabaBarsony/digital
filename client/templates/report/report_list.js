@@ -8,7 +8,7 @@ Template.reportList.helpers({
 			return Reports.find();
 		}
 		else if(category === "own"){
-			return Reports.find({ employeeId: "C7de8wF3xm2hK5w2t" });
+			return Reports.find({ employeeId: Meteor.userId() });
 		}
 		else{
 			Session.set("report-category", "all");
