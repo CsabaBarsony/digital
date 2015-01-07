@@ -11,7 +11,7 @@ Meteor.publish("employees", function(){
 });
 
 Meteor.publish("userData", function(){
-	return Meteor.users.find({}, { fields: { _id: 1 } });
+	return Meteor.users.find({}, { fields: { _id: 1, username: 1 } });
 });
 
 Meteor.methods({
