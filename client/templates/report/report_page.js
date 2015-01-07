@@ -1,9 +1,9 @@
 Template.reportPage.helpers({
 	employees: function(){
-		return Employees.find();
+		return Meteor.users.find();
 	},
 	ownEmployee: function(){
-		return Employees.findOne({ _id: this.employeeId });
+		return Meteor.users.findOne({ _id: this.employeeId });
 	}
 });
 
