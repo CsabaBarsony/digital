@@ -1,5 +1,7 @@
 Template.employeeList.helpers({
 	employees: function(){
-		return Employees.find();
+		var u = Meteor.users.find();
+		console.log(u);
+		return u;
 	}
 });
