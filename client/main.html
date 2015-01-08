@@ -22,17 +22,16 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="{{pathFor 'home'}}">Kezdőlap</a>
-        {{#if currentUser}}
+        		{{#if currentUser}}
 					<a class="navbar-brand" href="{{pathFor 'reportList'}}">Bejelentések</a>
 					<a class="navbar-brand" href="{{pathFor 'employeeList'}}">Alkalmazottak</a>
 					<a class="navbar-brand" href="{{pathFor 'clientList'}}">Ügyfelek</a>
-        {{else}}
-					<a class="navbar-brand" href="{{pathFor 'issue'}}">Hibabejelentés</a>
-        {{/if}}
+					<a class="navbar-brand" href="{{pathFor 'newTask'}}">Új feladat</a>
+        		{{/if}}
 			</div>
 			<div class="collapse navbar-collapse" id="navigation">
 				<ul class="nav navbar-nav navbar-right">
-          {{> loginButtons}}
+          			{{> loginButtons}}
 				</ul>
 			</div>
 		</div>

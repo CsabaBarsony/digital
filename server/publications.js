@@ -1,8 +1,8 @@
-Meteor.publish("reports", function(){
-	return Reports.find();
+Meteor.publish("tasks", function(){
+	return Tasks.find();
 });
 
-Meteor.publish("userData", function(){
+Meteor.publish("employees", function(){
 	return Meteor.users.find({}, { fields: { _id: 1, username: 1 } });
 });
 

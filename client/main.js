@@ -1,4 +1,3 @@
-Meteor.subscribe("reports");
-Meteor.subscribe("userData");
+Meteor.subscribe("tasks");
+Meteor.subscribe("employees");
 Meteor.subscribe("clients");
-

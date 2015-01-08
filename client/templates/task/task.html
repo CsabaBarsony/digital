@@ -1,0 +1,23 @@
+<template name="newTask">
+	<form id="new-task-form">
+		<div class="form-group">
+			<label class="control-label" for="description">Leírás:</label>
+			<div class="controls">
+				<textarea name="description" id="description" rows="10" class="form-control"></textarea>
+			</div>
+		</div>
+		<select name="employee" id="csati">
+			<option value="0">Válasszon egy alkalmazottat!</option>
+            {{#each employees}}
+				<option value="{{_id}}">{{username}}</option>
+            {{/each}}
+		</select>
+		<select name="client" id="csati">
+			<option value="0">Válasszon egy ügyfelet!</option>
+            {{#each clients}}
+				<option value="{{_id}}">{{name}}</option>
+            {{/each}}
+		</select>
+		<button type="submit" id="selectButton" class="btn btn-primary">Ment</button>
+	</form>
+</template>
