@@ -5,25 +5,40 @@ Template.clientList.helpers({
 });
 
 Template.clientList.events({
-	"submit form": function(e){
-		var name 	= e.target.name.value,
-			address = e.target.address.value;
+	"click #new-client": function(e){
+		Modal.show('formModal', { formTemplate: 'newClientForm', title: 'Új ügyfél' });
+	}
+});
 
-		if(!name || !address){
+Template.clientListItem.events({
+	"click #client-edit": function(e){
+		var id = $(e.target).data("id");
+		var client = Clients.findOne(id);
+		Modal.show('formModal', { formTemplate: 'newClientForm', title: 'Ügyfél szerkesztése', formObject: client});
+	},
+	"click #client-delete": function(e){
+		if(!confirm("Biztosan törli az ügyfelet?")) return;
+		var id = $(e.target).data("id");
+		Clients.remove(id);
+	}
+});
+
+Template.newClientForm.events({
+	"click #submit-client": function(e){
+		e.preventDefault();
+		var id = $("#id").val();
+		var name = $("#clientName").val();
+		var address = $("#clientAddress").val();
+		if(!name || !address) {
 			alert("Minden mezőt ki kell tölteni!");
 			return;
 		}
-
-		var client = {
-			name   : name,
-			address: address
-		};
-
-		Clients.insert(client);
-
-		e.target.name.value    = "";
-		e.target.address.value = "";
-
-		return false;
+		if(id){
+			Clients.update(id, { $set: { name: name, address: address } });
+		}
+		else{
+			Clients.insert({ name: name, address: address });
+		}
+		Modal.hide("formModal");
 	}
 });
