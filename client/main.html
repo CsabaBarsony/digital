@@ -1,3 +1,16 @@
+<head>
+  <title>Digital</title>
+</head>
+
+<template name="layout">
+	<div class="container">
+    {{> header}}
+		<div id="main">
+      {{> yield}}
+		</div>
+	</div>
+</template>
+
 <template name="header">
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="container-fluid">
@@ -9,19 +22,23 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="{{pathFor 'home'}}">Kezdőlap</a>
-				{{#if currentUser}}
+        {{#if currentUser}}
 					<a class="navbar-brand" href="{{pathFor 'reportList'}}">Bejelentések</a>
 					<a class="navbar-brand" href="{{pathFor 'employeeList'}}">Alkalmazottak</a>
-				  	<a class="navbar-brand" href="{{pathFor 'clientList'}}">Ügyfelek</a>
-				{{else}}
-                <a class="navbar-brand" href="{{pathFor 'errorReport'}}">Hibabejelentés</a>
-				{{/if}}
+					<a class="navbar-brand" href="{{pathFor 'clientList'}}">Ügyfelek</a>
+        {{else}}
+					<a class="navbar-brand" href="{{pathFor 'issue'}}">Hibabejelentés</a>
+        {{/if}}
 			</div>
 			<div class="collapse navbar-collapse" id="navigation">
 				<ul class="nav navbar-nav navbar-right">
-            		{{> loginButtons}}
+          {{> loginButtons}}
 				</ul>
 			</div>
 		</div>
 	</nav>
+</template>
+
+<template name="loading">
+	<h2>Loading...</h2>
 </template>

@@ -3,3 +3,31 @@
 	  <span>{{username}}</span>
 	</a>
 </template>
+
+<template name="employeeList">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3>Alkalmazottak</h3>
+		</div>
+		<ul class="list-group">
+		{{#each employees}}
+			{{> employee}}
+		{{/each}}
+		</ul>
+		<!--<div class="panel-footer">Panel footer</div>-->
+	</div>
+</template>
+
+<template name="employeePage">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3>Alkalmazott: {{name}}</h3>
+		</div>
+		<ul class="list-group">
+		{{#each reports}}
+			{{>report}}
+		{{/each}}
+		</ul>
+		<!--<div class="panel-footer">Panel footer</div>-->
+	</div>
+</template>

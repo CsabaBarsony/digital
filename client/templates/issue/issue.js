@@ -1,4 +1,4 @@
-Template.errorReport.events({
+Template.issue.events({
 	"submit form": function(e){
 		e.preventDefault();
 
@@ -11,7 +11,7 @@ Template.errorReport.events({
 		}
 
 		var report = {
-			name: name,
+			name	   : name,
 			description: description
 		};
 

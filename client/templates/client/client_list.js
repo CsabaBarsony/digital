@@ -21,7 +21,7 @@ Template.clientList.events({
 
 		Clients.insert(client);
 
-		e.target.name.value = "";
+		e.target.name.value    = "";
 		e.target.address.value = "";
 
 		return false;

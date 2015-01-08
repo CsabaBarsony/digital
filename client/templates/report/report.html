@@ -5,3 +5,48 @@
 	  <span class="dig-report-list-employee">{{employee}}</span>
 	</a>
 </template>
+
+
+
+<template name="reportList">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3>Bejelentések</h3>
+		</div>
+		<div class="panel-body">
+			<button type="button" class="btn btn-default" id="dig-report-category-all">Összes</button>
+			<button type="button" class="btn btn-default" id="dig-report-category-new">Kiosztatlan</button>
+			<button type="button" class="btn btn-default" id="dig-report-category-own">Saját</button>
+		</div>
+		<ul class="list-group">
+		{{#each reports}}
+			{{> report}}
+		{{/each}}
+		</ul>
+	</div>
+</template>
+
+<template name="reportPage">
+	Feladó: {{name}}<br/>
+	Hibaleírás: {{description}}<br/>
+	{{#if employeeId}}
+			Felelős: {{ownEmployee.username}}
+	{{else}}
+			nincs felelős hozzárendelve
+	{{/if}}
+	<div class="dropdown">
+		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+			Felelős hozzárendelése
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+		{{#each employees}}
+					<li role="presentation"><a class="employee-list-item" data-employee-id="{{_id}}" role="menuitem" tabindex="-1" href="#">{{username}}</a></li>
+		{{/each}}
+		</ul>
+	</div>
+</template>
+
+<template name="reportSent">
+	<h3>A hibabejelentés elküldve.</h3>
+</template>
