@@ -1,0 +1,88 @@
+<template name="activities">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h2>Tevékenységek</h2>
+			<button class="btn btn-primary" id="new-activity">Új tevékenység</button>
+			<button id="collapse-up" class="btn btn-primary activity-toggle">
+				<span class="glyphicon glyphicon-collapse-up" aria-hidden="true"></span>
+			</button>
+			<button id="collapse-down" class="btn btn-primary activity-toggle">
+				<span class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span>
+			</button>
+		</div>
+		<div class="panel-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        {{#each activities}}
+                            {{> activityItem}}
+                        {{/each}}
+                    </div>
+                    <div class="col-md-8">
+                        {{> readingPane selectedActivity}}
+                    </div>
+                </div>
+            </div>
+
+		</div>
+	</div>
+</template>
+
+<template name="activityItem">
+    {{#if openedActivity}}
+        <li class="list-group-item activity-item-link">
+			<div><strong>id:</strong> {{_id}}</div>
+			<div><strong>név:</strong> {{name}}</div>
+			<button class="btn btn-primary btn-xs activity-toggle">
+				<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+			</button>
+			<button class="btn btn-primary btn-xs activity-select">
+				<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+			</button>
+			<button class="btn btn-primary btn-xs activity-add">
+				<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+			</button>
+            {{#each childActivities}}
+                {{> activityItem}}
+            {{/each}}
+		</li>
+    {{else}}
+		<li class="list-group-item activity-item-link">
+			<div><strong>id:</strong> {{_id}}</div>
+			<div><strong>név:</strong> {{name}}</div>
+			<button class="btn btn-primary btn-xs activity-toggle">
+				<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+			</button>
+			<button class="btn btn-primary btn-xs activity-select">
+				<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+			</button>
+			<button class="btn btn-primary btn-xs activity-add">
+				<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+			</button>
+		</li>
+    {{/if}}
+</template>
+
+<template name="childActivity">
+	<a class="list-group-item activity-item-link">
+		<div><strong>id:</strong> {{_id}}</div>
+		<div><strong>név:</strong> {{name}}</div>
+	</a>
+</template>
+
+<template name="newActivityForm">
+	<form id="new-activity-form">
+		<input type="text" class="form-control" placeholder="Tevékenység neve" />
+		<br/>
+		<button type="submit" class="btn btn-primary" id="activity-submit">Ment</button>
+    </form>
+</template>
+
+<template name="readingPane">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>Leírás</h3>
+        </div>
+        <div class="panel-body panel-info">{{activity.description}}</div>
+    </div>
+</template>

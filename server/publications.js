@@ -9,3 +9,7 @@ Meteor.publish("employees", function(){
 Meteor.publish("clients", function(){
 	return Clients.find();
 });
+
+Meteor.publish("activities", function(){
+	return Activities.find();
+});
