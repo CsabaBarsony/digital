@@ -1,23 +1,72 @@
-<template name="newTask">
+<template name="taskListItem">
+	<tr>
+		<td>{{description}}</td>
+		<td>{{creator}}</td>
+		<td>{{employee}}</td>
+		<td>{{client}}</td>
+		<td>
+			<button class="btn btn-primary btn-xs" id="task-edit" data-id="{{_id}}">
+				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+				szerkeszt
+			</button>
+			<button class="btn btn-danger btn-xs" id="task-delete" data-id="{{_id}}">
+				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+				töröl
+			</button>
+		</td>
+	</tr>
+</template>
+
+<template name="taskList">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3>Feladatok</h3>
+		</div>
+		<div class="panel-body">
+			<button class="btn btn-primary" id="new-task">Új feladat</button>
+			<table class="table">
+				<thead>
+				<tr>
+					<th>Leírás</th>
+					<th>Létrehozó</th>
+					<th>Alkalmazott</th>
+					<th>Ügyfél</th>
+					<th>Műveletek</th>
+				</tr>
+				</thead>
+				<tbody>
+				{{#each tasks}}
+					{{> taskListItem}}
+				{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</template>
+
+<template name="newTaskForm">
 	<form id="new-task-form">
 		<div class="form-group">
 			<label class="control-label" for="description">Leírás:</label>
 			<div class="controls">
-				<textarea name="description" id="description" rows="10" class="form-control"></textarea>
+				<textarea name="description" id="description" rows="10" class="form-control" placeholder="Adja meg a leírást!">{{description}}</textarea>
 			</div>
 		</div>
-		<select name="employee" id="csati">
+		<label for="employee-select">Alkalmazott:</label><br/>
+		<select name="employee" id="employee-select">
 			<option value="0">Válasszon egy alkalmazottat!</option>
-            {{#each employees}}
-				<option value="{{_id}}">{{username}}</option>
-            {{/each}}
-		</select>
-		<select name="client" id="csati">
+			{{#each employees}}
+				<option value="{{_id}}">{{username}} - {{employeeEquals}}</option>
+			{{/each}}
+		</select><br/>
+		<label for="client-select">Ügyfél:</label><br/>
+		<select name="client" id="client-select">
 			<option value="0">Válasszon egy ügyfelet!</option>
-            {{#each clients}}
+			{{#each clients}}
 				<option value="{{_id}}">{{name}}</option>
-            {{/each}}
-		</select>
-		<button type="submit" id="selectButton" class="btn btn-primary">Ment</button>
+			{{/each}}
+		</select><br/><br/>
+		<input type="hidden" id="id" value="{{_id}}"/>
+		<button type="submit" id="submit-task" class="btn btn-primary">Ment</button>
 	</form>
 </template>
